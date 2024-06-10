@@ -24,6 +24,12 @@ def index_name(index):
         return list1[temp]
 
 
+def index_namet(index):
+    list1 = ["kuti", "lakh", "hajar", "shata"]
+    temp = -(index % 4)
+    return list1[temp]
+
+
 def sub(c):
     num1 = int(input())
     list1 = [0 for _ in range(11)]
