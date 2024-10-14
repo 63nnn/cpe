@@ -1,8 +1,7 @@
 def make_fib():
-    fib = [0, 1]
-    for i in range(2, 40):
+    fib = [1, 2]
+    for i in range(2, 38):
         fib.append(fib[i - 2] + fib[i - 1])
-    fib.remove(0)
     fib = fib[::-1]
     return fib
 
@@ -14,7 +13,7 @@ def fib_bits(x):
     tmp = x
     bits = ""
     for i in fib_lst:
-        if tmp > i:
+        if tmp >= i:
             tmp -= i
             bits += "1"
         else:
@@ -26,7 +25,7 @@ def main():
     n = int(input())
     nums = [0] * n
     for i in range(n):
-        nums[i] = eval(input())
+        nums[i] = int(input())
 
     for i in nums:
         tmp = fib_bits(i).lstrip("0")
