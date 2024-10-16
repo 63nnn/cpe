@@ -30,7 +30,7 @@ def main():
     flag = True
     while ori_num:
 
-        unit = [ "shata", "hajar", "lakh","kuti"]
+        unit = ["shata", "hajar", "lakh", "kuti"]
 
         sliced = slice_num(ori_num)
         amount = (len(sliced) - 1) % 4
@@ -42,13 +42,17 @@ def main():
             if amount < 0:
                 amount = 3
 
-            if unit[amount] == "kuti" or sliced[0] != "":
+            if sliced[0] == "":
+                flag = False
+            if sliced[0] != "":
                 print(f" {sliced[0]}", end="")
+
+            if flag or unit[amount] == "kuti":
                 print(f" {unit[amount]}", end="")
             sliced.remove(sliced[0])
 
             amount -= 1
-        if sliced[0] != "" and sliced[0] != 00 and sliced[0] != 0:
+        if int(sliced[0]) != 0:
             print(f" {sliced[0]}")
         c += 1
         ori_num = input()
