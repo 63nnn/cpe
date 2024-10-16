@@ -27,7 +27,7 @@ def slice_num(x: str):
 def main():
     c = 1
     ori_num = input()
-    flag = True
+    all_zero_flag = True
     while ori_num:
 
         unit = ["shata", "hajar", "lakh", "kuti"]
@@ -42,20 +42,28 @@ def main():
             if amount < 0:
                 amount = 3
 
-            if sliced[0] == "":
-                flag = False
+
             if sliced[0] != "":
                 print(f" {sliced[0]}", end="")
-
-            if flag or unit[amount] == "kuti":
                 print(f" {unit[amount]}", end="")
-            sliced.remove(sliced[0])
+                all_zero_flag = False
+            elif unit[amount] == "kuti":
+                print(f" {unit[amount]}", end="")
+            else:
+                pass
+                
 
+            sliced.remove(sliced[0])
             amount -= 1
         if int(sliced[0]) != 0:
-            print(f" {sliced[0]}")
+            print(f" {int(sliced[0])}", end="")
+        if all_zero_flag:
+            print(f" 0", end="")
+
+        print()
         c += 1
         ori_num = input()
+        all_zero_flag = True
 
 
 main()

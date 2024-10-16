@@ -1,12 +1,6 @@
 #include <iostream>
 #include <string>
-#include <algorithm>
 using namespace std;
-
-bool compare(int a, int b)
-{
-    return a > b;
-}
 
 int main()
 {
@@ -23,29 +17,41 @@ int main()
         str1 += buffer;
     }
 
-    int accu[26] = {0};
+    int accu[27] = {0};
+    int highest = 0;
 
     for (int i = 0; i < str1.size(); i++)
     {
         if (((str1[i] - 64) < 27) && ((str1[i] - 64) > 0))
         {
             accu[(str1[i] - 64)] += 1;
+            if (accu[(str1[i] - 64)] > highest)
+            {
+                highest = accu[(str1[i] - 64)];
+            }
         }
         else if (((str1[i] - 96) < 27) && ((str1[i] - 96) > 0))
 
         {
             accu[(str1[i] - 96)] += 1;
+            if (accu[(str1[i] - 96)] > highest)
+            {
+                highest = accu[(str1[i] - 96)];
+            }
         }
     }
+    cout << flush;
 
-    sort(accu, accu + 26, compare);
-    for (int i = 0; i < 26; i++)
+    for (int h = highest; h > 0; h--)
     {
 
-        if (accu[i] != 0)
+        for (int i = 0; i < 26; i++)
         {
-            char tmp = i;
-            cout << tmp << " " << accu[i] << endl;
+            if (accu[i] == h)
+            {
+                char tmp = i + 64;
+                cout << tmp << " " << accu[i] << endl;
+            }
         }
     }
 
